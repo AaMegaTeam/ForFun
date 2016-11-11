@@ -21,6 +21,7 @@ if msg.text == "Amin" then
 end
 if msg.text == "amin" then
 	return reply_msg(msg.id, "مآی فادِر بیا این دئوث کارت داره😐", ok_cb, false)
+end
 if msg.text == "bot" then
 	return reply_msg(msg.id, "ha?", ok_cb, false)
 end

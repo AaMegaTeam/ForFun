@@ -606,8 +606,10 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "SuperGroup settings:\nLock links : "..settings.lock_link.."\nLock flood: "..settings.flood.."\nFlood sensitivity : "..NUM_MSG_MAX.."\nLock spam: "..settings.lock_spam.."\nLock Arabic: "..settings.lock_arabic.."\nLock Member: "..settings.lock_member.."\nLock RTL: "..settings.lock_rtl.."\nLock Tgservice : "..settings.lock_tgservice.."\nLock sticker: "..settings.lock_sticker.."\nPublic: "..settings.public.."\nStrict settings: "..settings.strict
-  return text
+  local text = "<i>تنظیمات سوپر گروه</i>\n\n_____________________________\n\n<i>قفل لینک</i> : "..settings.lock_link.."\n<i>قفل فوروارد</i>: "..settings.lock_fwd.."\n<i>قفل حساسیت اسپم</i>: "..settings.flood.."\n<i>حساسیت اسپم</i> : "..NUM_MSG_MAX.."\n<i>قفل اسپم</i>: "..settings.lock_spam.."\n<i>قفل عربی یا فارسی</i>: "..settings.lock_arabic.."\n<i>قفل کاربران</i>: "..settings.lock_member.."\n<i>قفل RTL</i>: "..settings.lock_rtl.."\n<i>قفل Tgservice</i> : "..settings.lock_tgservice.."\n<i>قفل استیکر</i>: "..settings.lock_sticker.."\n<i>عمومی</i>: "..settings.public.."\n<i>تنظیمات سخت گیرانه</i>: "..settings.strict
+  local text = string.gsub(text,'yes','🔐')
+  local text = string.gsub(text,'no','🔓')
+return text
 end
 
 local function promote_admin(receiver, member_username, user_id)
@@ -677,7 +679,7 @@ local function modlist(msg)
     return 'No moderator in this group.'
   end
   local i = 1
-  local message = '\nList of moderators for ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
+  local message = '\n<i>لیست مدیران برای سوپر گروه</i> ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
   for k,v in pairs(data[tostring(msg.to.id)]['moderators']) do
     message = message ..i..' - '..v..' [' ..k.. '] \n'
     i = i + 1
@@ -2018,7 +2020,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = "Message /superhelp to @Teleseed in private for SuperGroup help"
+			text = "<i>باشه بهش میگم</i>"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
@@ -2027,7 +2029,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'peer_id' and is_admin1(msg)then
-			text = msg.to.peer_id
+			text = 
 			reply_msg(msg.id, text, ok_cb, false)
 			post_large_msg(receiver, text)
 		end

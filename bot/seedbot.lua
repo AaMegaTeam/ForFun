@@ -239,7 +239,8 @@ function create_config( )
         "pl",
 	"setsticker",
 	"setnerkh",
-	"updater"
+	"updater",
+	"fwd"
     },
     sudo_users = {170172168},--Sudo users
     moderation = {data = 'data/moderation.json'},

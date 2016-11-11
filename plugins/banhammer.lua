@@ -116,18 +116,18 @@ local function kick_ban_res(extra, success, result)
 			send_large_msg(receiver, "You can't ban mods/owner/admins")
 			return
         end
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] banned')
+        send_large_msg(receiver, '<i>کاربر @'..member..' ['..member_id..'] به دلیل خارض کون بن شد</i>')
 		ban_user(member_id, chat_id)
       elseif get_cmd == 'unban' then
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] unbanned')
+        send_large_msg(receiver, '<i>کاربر @'..member..' ['..member_id..']به دلیل اتمام خارش کون آن بن شد</i>')
         local hash =  'banned:'..chat_id
         redis:srem(hash, member_id)
         return 'User '..user_id..' unbanned'
       elseif get_cmd == 'banall' then
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] globally banned')
+        send_large_msg(receiver, '<i>کاربر @'..member..' ['..member_id..'] به دلیل مادر جندگی بن جهانی شد!</i>')
 		banall_user(member_id)
       elseif get_cmd == 'unbanall' then
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] globally unbanned')
+        send_large_msg(receiver, '<i>کاربر @'..member..' ['..member_id..'] از بن جهانی خارج شد!</i>')
 	    unbanall_user(member_id)
     end
 end

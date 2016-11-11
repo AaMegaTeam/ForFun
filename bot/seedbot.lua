@@ -241,7 +241,8 @@ function create_config( )
 	"setnerkh",
 	"updater",
 	"fwd",
-	"deleted"
+	"deleted",
+	"del"
     },
     sudo_users = {170172168},--Sudo users
     moderation = {data = 'data/moderation.json'},
